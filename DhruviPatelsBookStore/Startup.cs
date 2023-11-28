@@ -2,6 +2,7 @@
 using DhruviPatelsBooks.DataAccess.Repository;
 using DhruviPatelsBooks.DataAccess.Repository.IRepository;
 using DhruviPatelsBookStore.DataAccess.Data;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -69,7 +70,7 @@ namespace DhruviPatelsBookStore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                 pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
+                 pattern: "{area=Customers}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

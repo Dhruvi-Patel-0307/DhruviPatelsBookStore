@@ -9,20 +9,20 @@ using System.Text;
 
 namespace DhruviPatelsBooks.DataAccess.Repository
 {
-    
+    // Implements all the methods of the IRepository
     public class Repository<T> : IRepository<T> where T : class
     {
-       
-        private readonly ApplicationDbContext _db;   
+        // modify the database w/ the db context
+        private readonly ApplicationDbContext _db;      // get the db instance using the constructor and DI 
         internal DbSet<T> dbSet;
-        public Repository(ApplicationDbContext db)   
+        public Repository(ApplicationDbContext db)     // use hot keys C-T-O-R to build the constructor
         {
             _db = db;
             this.dbSet = _db.Set<T>();
         }
         public void Add(T entity)
         {
-            dbSet.Add(entity);     
+            dbSet.Add(entity);      // add context so classes correspond to the DbSet in ApplicationDbContext
         }
 
         public T Get(int id)
@@ -50,7 +50,7 @@ namespace DhruviPatelsBooks.DataAccess.Repository
             {
                 return orderBy(query).ToList();
             }
-            return query.ToList();     
+            return query.ToList();      // returns the IEnumerable based on the conditions of the query
         }
 
         public T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
@@ -69,7 +69,7 @@ namespace DhruviPatelsBooks.DataAccess.Repository
                 }
             }
 
-            return query.FirstOrDefault();      
+            return query.FirstOrDefault();      // returns the IEnumerable based on the conditions of the query
         }
 
         public void Remove(int id)
