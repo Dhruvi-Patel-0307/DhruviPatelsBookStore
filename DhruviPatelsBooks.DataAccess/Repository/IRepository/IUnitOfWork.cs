@@ -4,7 +4,12 @@ using System.Text;
 
 namespace DhruviPatelsBooks.DataAccess.Repository.IRepository
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        ICategoryRepository Category { get; }
+        ISP_Call SP_Call { get; }
+       
+
+        void Save();
     }
 }

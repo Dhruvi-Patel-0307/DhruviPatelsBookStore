@@ -1,4 +1,6 @@
 
+using DhruviPatelsBooks.DataAccess.Repository;
+using DhruviPatelsBooks.DataAccess.Repository.IRepository;
 using DhruviPatelsBookStore.DataAccess.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,9 +35,12 @@ namespace DhruviPatelsBookStore
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>()    //options => options.SignIn.RequireConfirmedAccount = true
+            services.AddDefaultIdentity<IdentityUser>()//removed this piece of code options => options.SignIn.RequireConfirmedAccount = true
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +69,7 @@ namespace DhruviPatelsBookStore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=Customers}/{controller=Home}/{action=Index}/{id?}");
+                 pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
