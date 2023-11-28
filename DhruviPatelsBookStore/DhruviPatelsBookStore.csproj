@@ -22,8 +22,4 @@
     <ProjectReference Include="..\DhruviPatelsBooks.Utility\DhruviPatelsBooks.Utility.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Customers\Views\" />
-  </ItemGroup>
-
 </Project>
